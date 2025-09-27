@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop/Alimentos_para_Roedores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/catalogo.css">
+    <link rel="stylesheet" href="../static/css/carrito.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../static/images/Logo.png" alt="PetShop Logo">
+                </a>
+            </div>
+
+           
+            <div class="actions">
+
+                <div class="cart">
+                    <img src="../static/images/icons8-carrito-de-compras-100.png" alt="Carrito">
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </header>
+        <nav>
+           
+        </nav>
+        <section class="contenido">
+            <h1 class="titulo-categoria">Nuevos Productos</h1>
+            <button class="boton-filtros">Filtros</button>
+            <div class="contenedor">
+                
+                <section class="catalogo">
+                    {% for producto in productos %}
+                    <div class="producto" data-precio="{{ producto.precio }}">
+                        {% set imagen_path = 'static/images/' + producto.id_producto|string + '.jpg' %}
+                        {% if imagen_path|safe %}
+                        <img src="{{ url_for('static', filename='images/' + producto.id_producto|string + '.jpg') }}" alt="{{ producto.nombre }}">
+                        {% endif %}
+                        <h3>{{ producto.nombre[:32]|ljust(32) }}</h3>
+                        <p>Bs. {{ "%.2f"|format(producto.precio) }}</p>
+                        <div class="cantidad">
+                            <button class="decrementar" data-index="{{ loop.index0 }}">-</button>
+                            <input type="text" class="cantidad-input" data-index="{{ loop.index0 }}" value="1" readonly>
+                            <button class="incrementar" data-index="{{ loop.index0 }}">+</button>
+                        </div>
+                        <button class="agregar">AGREGAR</button>
+                    </div>
+                    {% endfor %}
+                </section>
+                
+                
+                
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="parent">
+            <div class="div1">
+                <div class="info">
+                    <h3 class="footer-title">UBICACIÓN</h3>
+                    <div class="ubicaciones">
+                        <img src="../static/images/icons8-ubicación-24.png" alt="">
+                        <p>Av. Busch y Tercer Anillo </p>
+                    </div>
+                    <div class="ubicaciones">
+                        <img src="../static/images/icons8-ubicación-24.png" alt="">
+                        <p>Av. America esq. Av Pando </p>
+                    </div>
+                </div>
+            </div>
+            <div class="div2">
+                <div class="info">
+                    <h3 class="footer-title">CONTACTANOS</h3>
+                    <p>Atención Telefónica</p>
+                    <p>(591) 54488474</p>
+                </div>
+            </div>
+            <div class="div3">
+                <div class="info">
+                    <h3 class="footer-title ayuda-title">AYUDA</h3>
+                    <a href="preguntas_frecuentes.html">Preguntas frecuentes</a>
+                    <a href="terminos_condiciones.html">Términos y condiciones</a>
+                    <a href="politica_privacidad.html">Política de privacidad</a>
+                </div>
+            </div>
+            <div class="div4">
+                <p>SÍGUENOS EN:</p>
+                <div class="imagenes-redes-sociales">
+                    <a href="https://www.facebook.com/people/Pet-Shop-Huellitas/100063562781781/" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="../static/images/icons8-facebook-48.png" alt="facebook">
+                    </a>
+                    <a href="https://www.instagram.com/petshop_huellitas/" target="_blank" rel="noopener noreferrer">
+                        <img src="../static/images/icons8-instagram-48.png" alt="instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@petshophuellita?is_from_webapp=1&sender_device=pc" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="../static/images/icons8-tiktok-48.png" alt="tiktok">
+                    </a>
+                </div>
+            </div>
+            <div class="div5">
+                <p>© Pet Shop - 2025</p>
+            </div>
+        </footer>
+    </div>
+    <div class="cart-container">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Carrito de compras</h2>
+                <button class="close-cart">❌</button>
+            </div>
+            <div class="cart-items"></div>
+            <p class="total-price">Total: Bs. 0,00</p>
+
+            <div class="cart-actions">
+                <button class="vaciar-carrito">🗑 Vaciar Carrito</button>
+                <a href="{{ url_for('formulario_pago') }}" class="finalizar-compra">🛒 Finalizar Compra</a>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/main.js"></script>
+    <script src="../static/js/nav.js"></script>
+    <script src="../static/js/catalogo.js"></script>
+    <script src="../static/js/carrito.js"></script>
+    <script src="../static/js/cerrar_sesion.js"></script>
+</body>
+
+</html>

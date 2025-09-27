@@ -1,0 +1,716 @@
+@import url('https://fonts.googleapis.com/css2?family=Angkor&display=swap');
+
+.contenido {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.producto-link {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+/* Indicador de ubicación (Breadcrumb) */
+.breadcrumb {
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 10px !important;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb .activo {
+    color: #834700;
+    font-weight: bold;
+}
+
+/* Título de la categoría */
+.titulo-categoria {
+    margin-top: 0;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: left;
+    /* Alineación a la izquierda */
+    margin-bottom: 5px;
+    font-family: 'Angkor', serif;
+    /* Aplica solo al título */
+    color: #834700;
+    /* Color marrón */
+}
+
+
+/* Contenedor principal */
+.contenedor {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    gap: 5px !important;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+/* Estilos de los filtros */
+.filter-content {
+    display: none;
+    /* Ocultamos los filtros inicialmente */
+    padding-left: 15px;
+}
+
+.toggle {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding: 8px;
+    background: white;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+    /* Línea súper fina con transparencia */
+    transition: border-bottom 0.3s, color 0.3s;
+}
+
+.toggle.activo {
+    color: #92572f;
+    border-bottom: 0.5px solid rgba(146, 87, 47, 0.8);
+    /* Línea delgada con color más definido */
+}
+
+
+
+.toggle .icon {
+    transition: transform 0.3s ease;
+}
+
+.filtros {
+    flex: 0 0 15%;
+    /* Ocupará el 10% del ancho total */
+    max-width: 450px;
+    /* Define un máximo para pantallas grandes */
+    height: fit-content;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+}
+
+.filtros h3 {
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+.filtros label {
+    font-size: 14px;
+    font-weight: bolder;
+    color: #333;
+    cursor: pointer;
+    align-items: center;
+}
+
+.filtros input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    /* Ajuste fino para reducir la separación */
+    cursor: pointer;
+}
+
+/* Cambiar color cuando el checkbox está seleccionado */
+.filtros input[type="checkbox"]:checked {
+    accent-color: #92572f;
+    /* Color personalizado para el checkbox */
+}
+
+
+/* Catálogo de productos */
+.catalogo {
+    flex: 1;
+    /* Se expande automáticamente en el espacio restante */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    min-height: 650px;
+    padding: 0px 18px !important;
+    overflow-y: auto;
+    /* Permite desplazamiento si hay más productos */
+}
+
+.producto,
+.producto1,
+.producto2 {
+    flex: 1 0 225px;
+    /* Se expande si hay espacio disponible */
+    max-width: 225px;
+    /* Limita la expansión para que no sean demasiado grandes */
+    transition: width 0.3s ease-in-out;
+    /* Agrega un ajuste suave */
+}
+
+/* Tarjetas de producto */
+.producto {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+    flex-shrink: 0 !important;
+}
+
+.producto:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.producto h3 {
+    font-size: 22px !important;
+    font-weight: normal !important;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    overflow: hidden; /* Oculta el texto que exceda el contenedor */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es demasiado largo */
+}
+
+.producto p {
+    font-size: 25px !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.cantidad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cantidad button,
+.cantidad input {
+    border: none;
+    padding: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.cantidad .incrementar {
+    background-color: #2C1608;
+    color: white;
+}
+.cantidad .incrementar:hover{
+    background-color: #602805;
+}
+.cantidad .incrementar:active{
+   transform: scale(0.95);
+}
+.cantidad .decrementar {
+    background-color: #E5E3CE;
+    color: black;
+}
+.cantidad .decrementar:hover {
+    background-color: #e9de66;
+}
+.cantidad .decrementar:active{
+    transform: scale(0.95);
+ }
+.agregar {
+    background-color: #F9C20C;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.agregar:hover{
+    background-color: #bc9105;
+}
+.agregar:active {
+    transform: scale(0.95); /* Hace que el botón se vea hundido */
+}
+.boton-filtros {
+    display: none;
+    /* Oculto por defecto (pantallas grandes) */
+}
+
+.limpiar-filtros {
+    display: none;
+}
+
+.aplicar-filtros {
+    display: none;
+}
+
+.cerrar-filtros {
+    display: none;
+}
+
+.producto1 {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto1:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto1 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.producto1 h3 {
+    font-size: 19.75px !important;
+    font-weight: normal !important;
+    margin-bottom: 6.5px;
+}
+.producto1 h3 a{
+    text-decoration: none !important;
+    color: inherit;
+}
+.producto1 p {
+    font-size: 25px !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.producto2 {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto2:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto2 img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.producto2 h3 {
+    font-size: 24px !important;
+    font-weight: normal !important;
+    margin-bottom: 18px;
+}
+
+.producto2 p {
+    font-size: 25px !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.producto3 {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto3:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto3 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.producto3 h3 {
+    font-size: 20px !important;
+    font-weight: normal !important;
+    margin-bottom: 26px;
+}
+
+.producto3 p {
+    font-size: 24px !important;
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+/*Producto4*/
+.producto4 {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto4:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto4 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.producto4 h3 {
+    font-size: 32px !important;
+    font-weight: normal !important;
+    margin-bottom: 26px;
+}
+
+.producto4 p {
+    font-size: 24px !important;
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+/*Producto 5*/
+.producto5 {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto5:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto5 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.producto5 h3 {
+    font-size: 25px !important;
+    font-weight: normal !important;
+    margin-bottom: 17px;
+}
+
+.producto5 p {
+    font-size: 24px !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+/*Produco6*/
+.producto6 {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto6:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto6 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.producto6 h3 {
+    font-size: 20px !important;
+    font-weight: normal !important;
+    margin-bottom: 21px;
+}
+
+.producto6 p {
+    font-size: 24px !important;
+    margin-top: 0;
+    margin-bottom: 9px;
+    font-weight: bold;
+}
+/*Producto7*/
+.producto7 {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto7:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto7 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.producto7 h3 {
+    font-size: 31px !important;
+    font-weight: normal !important;
+    margin-bottom: 20px;
+}
+
+.producto7 p {
+    font-size: 26px !important;
+    margin-top: 0;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+/*Producto8*/
+.producto8 {
+    background-color: white;
+    border: 1px solid #000000;
+    width: 225px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto8:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.producto8 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.producto8 h3 {
+    font-size: 18px !important;
+    font-weight: normal !important;
+    margin-bottom: 10px;
+}
+
+.producto8 p {
+    font-size: 26px !important;
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+/* Filtro responsive para móviles */
+@media (min-width: 200px) and (max-width: 800px) {
+    .contenedor {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .catalogo {
+        justify-content: center;
+    }
+
+    .filtros {
+        position: fixed;
+        right: -300px;
+        width: 250px !important;
+        top: 0;
+        height: 100%;
+        background: white;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        padding: 35px 10px 10px 10px !important;
+        transition: right 0.3s ease-in-out;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    /* Botón de cerrar */
+    .cerrar-filtros {
+        display: block;
+        /* Asegurar que sea visible */
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        background: none;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 2001;
+    }
+
+
+    /* Botones de acción */
+    .limpiar-filtros {
+        display: block;
+        padding: 10px;
+        border: none;
+        background: #ff3204;
+        font-size: 16px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .aplicar-filtros {
+        margin-top: 10px !important;
+        display: block;
+        padding: 10px;
+        border: none;
+        background: #ffcc00;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .filtros.mostrar {
+        right: 0;
+    }
+
+    .boton-filtros {
+        display: block;
+        padding: 10px 15px;
+        background: #ffcc00;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+        /* Espacio debajo del título */
+        margin-bottom: 30px !important;
+        align-self: flex-start;
+        /* Asegura que esté alineado a la izquierda */
+    }
+
+    .titulo-categoria {
+        margin-top: 0;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: left;
+        /* Alineación a la izquierda */
+        margin-left: 30px;
+        /* Ajusta el margen para alejarlo del borde */
+        margin-bottom: 30px;
+    }
+
+    .breadcrumb {
+        width: 100%;
+        text-align: left;
+        font-size: 15px;
+        color: #000000;
+        margin-bottom: 10px !important;
+    }
+
+    .breadcrumb .activo {
+        color: #834700;
+        font-weight: bold;
+        font-size: 15px !important;
+    }
+
+    .titulo-categoria {
+        margin-top: 0;
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 15px !important;
+        margin-bottom: 10px;
+        font-family: 'Angkor', serif;
+        /* Aplica solo al título */
+        color: #834700;
+        /* Color marrón */
+    }
+}
+
+@media (min-width: 860px) and (max-width: 1900px) {
+
+
+    .filtros {
+        background: white;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        width: 250px;
+        height: fit-content;
+        top: 100px;
+        font-size: 15px;
+    }
+
+    .contenedor {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        gap: 10px;
+        align-items: flex-start;
+        overflow: hidden;
+    }
+
+}

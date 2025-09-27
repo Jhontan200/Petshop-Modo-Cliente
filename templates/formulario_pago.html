@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop/Modulo Pago</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/modulo_pago.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../static/images/Logo.png" alt="PetShop Logo">
+                </a>
+            </div>
+
+            
+            <div class="actions">
+                <div class="cart">
+                    <img src="../static/images/icons8-carrito-de-compras-100.png" alt="Carrito">
+                </div>
+            </div>
+        </header>
+        <nav>
+            
+        </nav>
+        <section class="checkout-container">
+            <div class="formulario">
+                <h2>Datos del Cliente</h2>
+                <form id="pago-form-datos">
+                    <label for="nombre" class="cliente-label">Nombre completo:</label>
+                    <input type="text" id="nombre" class="form-dato" placeholder="Nombre completo" required
+                        pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo se permiten letras y espacios.">
+
+                    <label for="correo" class="cliente-label">Correo electrónico:</label>
+                    <input type="text" id="correo" class="form-dato" placeholder="Correo electrónico">
+
+                    <label for="direccion" class="cliente-label">Dirección:</label>
+                    <input type="text" id="direccion" class="form-dato" placeholder="Dirección" required>
+
+                    <label for="telefono" class="cliente-label">Teléfono:</label>
+                    <input type="tel" id="telefono" class="form-dato" placeholder="Teléfono" required maxlength="8"
+                        pattern="[0-9]{8}" title="Por favor ingrese un número válido de 8 dígitos.">
+
+
+                    <label for="departamento" class="cliente-label">Departamento:</label>
+                    <select id="departamento" name="departamento" class="pago-input" required>
+                        <option value="">Seleccione un departamento</option>
+                        <option value="Chuquisaca">Chuquisaca</option>
+                        <option value="La Paz">La Paz</option>
+                        <option value="Cochabamba">Cochabamba</option>
+                        <option value="Oruro">Oruro</option>
+                        <option value="Potosí">Potosí</option>
+                        <option value="Tarija">Tarija</option>
+                        <option value="Santa Cruz">Santa Cruz</option>
+                        <option value="Beni">Beni</option>
+                        <option value="Pando">Pando</option>
+                    </select>
+                </form>
+            </div>
+
+            <div class="metodo-pago-container">
+                <h2>Método de Pago</h2>
+                <div class="metodo-pago-opciones">
+                    <div class="metodo-opcion" onclick="seleccionarMetodo('Tarjeta')">
+                        <img src="../static/images/tarjeta-de-credito.png" alt="Tarjeta"
+                            class="metodo-img metodo-seleccionable" id="opcion-tarjeta">
+                        <p class="metodo-texto">Tarjeta</p>
+                    </div>
+                    <div class="metodo-opcion" onclick="seleccionarMetodo('Transferencia')">
+                        <img src="../static/images/telefono-inteligente.png" alt="Transferencia"
+                            class="metodo-img metodo-seleccionable" id="opcion-transferencia">
+                        <p class="metodo-texto">Transferencia</p>
+                    </div>
+                    <div class="metodo-opcion" onclick="seleccionarMetodo('Efectivo')">
+                        <img src="../static/images/dinero-en-efectivo.png" alt="Efectivo"
+                            class="metodo-img metodo-seleccionable" id="opcion-efectivo">
+                        <p class="metodo-texto">Efectivo</p>
+                    </div>
+                </div>
+                <input type="hidden" id="metodo-seleccionado" value="">
+            </div>
+
+            <div class="acciones-finales">
+                <h2> <span class="pago-total" id="totalFinal">Bs. 0.00</span></h2>
+                <button onclick="window.location.href='/'">Seguir Comprando</button>
+                <button class="pago-finalizar">Finalizar compra</button>
+            </div>
+
+            <div class="resumen-carrito">
+                <div class="resumen-header">
+                    <h2>Resumen de Carrito</h2>
+                    <button class="pago-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+                </div>
+                <div class="pago-cart-items" id="listaCarrito"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="parent">
+            <div class="div1">
+                <div class="info">
+                    <h3 class="footer-title">UBICACIÓN</h3>
+                    <div class="ubicaciones">
+                        <img src="../static/images/icons8-ubicación-24.png" alt="">
+                        <p>Av. Busch y Tercer Anillo </p>
+                    </div>
+                    <div class="ubicaciones">
+                        <img src="../static/images/icons8-ubicación-24.png" alt="">
+                        <p>Av. America esq. Av Pando </p>
+                    </div>
+                </div>
+            </div>
+            <div class="div2">
+                <div class="info">
+                    <h3 class="footer-title">CONTACTANOS</h3>
+                    <p>Atención Telefónica</p>
+                    <p>(591) 54488474</p>
+                </div>
+            </div>
+            <div class="div3">
+                <div class="info">
+                    <h3 class="footer-title ayuda-title">AYUDA</h3>
+                    <a href="preguntas_frecuentes.html">Preguntas frecuentes</a>
+                    <a href="terminos_condiciones.html">Términos y condiciones</a>
+                    <a href="politica_privacidad.html">Política de privacidad</a>
+                </div>
+            </div>
+            <div class="div4">
+                <p>SÍGUENOS EN:</p>
+                <div class="imagenes-redes-sociales">
+                    <a href="https://www.facebook.com/people/Pet-Shop-Huellitas/100063562781781/" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="../static/images/icons8-facebook-48.png" alt="facebook">
+                    </a>
+                    <a href="https://www.instagram.com/petshop_huellitas/" target="_blank" rel="noopener noreferrer">
+                        <img src="../static/images/icons8-instagram-48.png" alt="instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@petshophuellita?is_from_webapp=1&sender_device=pc" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="../static/images/icons8-tiktok-48.png" alt="tiktok">
+                    </a>
+                </div>
+            </div>
+            <div class="div5">
+                <p>© Pet Shop - 2025</p>
+            </div>
+        </footer>
+    </div>
+    <!-- Modal Tarjeta -->
+    <div id="modal-tarjeta" class="modal-pago" style="display:none;">
+        <div class="modal-contenido">
+            <h3>Pago con Tarjeta</h3>
+            <label for="numero-tarjeta" class="label-izquierda">Número de Tarjeta (16 dígitos):</label>
+            <input type="text" id="numero-tarjeta" maxlength="16" pattern="\d{16}" placeholder="1234 5678 9012 3456">
+
+            <label for="codigo-seguridad" class="label-izquierda">Código de Seguridad (4 dígitos):</label>
+            <input type="text" id="codigo-seguridad" maxlength="4" pattern="\d{4}" placeholder="1234">
+
+            <div class="botones-modal">
+                <button onclick="confirmarTarjeta()">Confirmar</button>
+                <button onclick="cerrarModal('modal-tarjeta')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Transferencia -->
+    <div id="modal-transferencia" class="modal-pago" style="display:none;">
+        <div class="modal-contenido">
+            <h3>Pago por Transferencia</h3>
+            <canvas id="qr-canvas"></canvas>
+            <p>Escanea este código para completar el pago</p>
+
+            <div class="botones-modal">
+                <button onclick="confirmarTransferencia()">Pago Completado</button>
+                <button onclick="cerrarModal('modal-transferencia')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/main.js"></script>
+    <script src="../static/js/nav.js"></script>
+    <script src="../static/js/carrito.js"></script>
+    <script src="../static/js/resumen.js"></script>
+    <script src="../static/js/cerrar_sesion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+</body>
+
+</html>
