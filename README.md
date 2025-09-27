@@ -7,12 +7,12 @@ Su propósito principal es mostrar en tiempo real los productos disponibles en l
 ## 🧰 Tecnologías y Herramientas
 | Tecnología / Librería |	Rol |
 |---------------------| -------- |
-| 🐍 Python	| Lógica del servidor (backend).|
-|🌐 JavaScript	| Interactividad y comunicación con el servidor (frontend). |
-|🛢️ MySQL |	Base de datos para almacenar productos y ventas.|
-| 🌶 Flask	| Micro-framework de Python para construir la aplicación web. |
-| 📅 datetime	| Manejo de fechas y horas para el registro de ventas. |
-| 🧭 mysql.connector |	Conexión entre Flask y la base de datos MySQL. |
+| 🐍 **Python**	| Lógica del servidor (backend).|
+|🌐 **JavaScript**	| Interactividad y comunicación con el servidor (frontend). |
+|🛢️ **MySQL** |	Base de datos para almacenar productos y ventas.|
+| 🌶 **Flask**	| Micro-framework de Python para construir la aplicación web. |
+| 📅 **datetime**	| Manejo de fechas y horas para el registro de ventas. |
+| 🧭 **mysql.connector** |	Conexión entre Flask y la base de datos MySQL. |
 
 ## 🎬 Demostración en Video
 
